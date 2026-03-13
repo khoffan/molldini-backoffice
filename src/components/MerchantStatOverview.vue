@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { useStatStore } from "../stores/statStore";
 
 const statStore = useStatStore();
-const { merchantStat, loading, error } = storeToRefs(statStore);
+const { merchantStat, loading } = storeToRefs(statStore);
 
 const getStatusClass = (status: string) => {
   switch (status) {

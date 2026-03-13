@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useStatStore } from "../stores/statStore";
 import { storeToRefs } from "pinia";
 
