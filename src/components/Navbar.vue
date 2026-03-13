@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/authStore.ts";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import BaseDropdown from "./BaseDropdown.vue";
 const router = useRouter();
 const authStore = useAuthStore();
-
-const isOpen = ref(false);
 
 const user = computed(() => authStore.auth);
 const handleLogout = async () => {
@@ -84,7 +82,7 @@ const goToProfile = () => {
 
           <template v-if="user">
             <BaseDropdown width="w-52">
-              <template #trigger="{ isOpen }">
+              <template #trigger>
                 <button
                   class="flex items-center space-x-2 pl-2 pr-1 py-1 rounded-lg hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
                 >
