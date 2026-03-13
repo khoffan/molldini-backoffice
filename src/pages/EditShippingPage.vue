@@ -1,8 +1,8 @@
 <template>
-    <main>
-        <shipping-form />
-    </main>
+  <main>
+    <ShippingForm />
+  </main>
 </template>
 <script setup lang="ts">
-import shippingForm from '@/components/shippingForm.vue';
+import ShippingForm from "@/components/ShippingForm.vue";
 </script>
