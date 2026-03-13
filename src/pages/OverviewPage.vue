@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Home from "../components/Home.vue";
+import OverviewAll from "@/components/OverviewAll.vue";
 </script>
 
 <template>
   <main>
-    <Home />
+    <OverviewAll />
   </main>
 </template>

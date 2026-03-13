@@ -1,6 +1,7 @@
 import api from '@/lib/api';
 import type { ICreatePaymentBody, IPayment } from '../interface/paymentInterface';
 import { defineStore } from 'pinia';
+import { AxiosError } from 'axios';
 
 interface paymentState {
     payments: IPayment[]
@@ -68,10 +69,15 @@ export const usePaymentStore = defineStore('payment', {
                 this.payments.sort((a, b) => a.sortOrder - b.sortOrder);
                 return { success: true };
             } catch (e: any) {
-                this.error = e.message;
-                throw e;
+                if (e instanceof AxiosError) {
+                    this.error = e.response?.data.message;
+                    throw e.response?.data.message;
+                }
+                this.error = "เกิดข้อผิดพลาด";
+                throw "เกิดข้อผิดพลาด";
             }
         },
+
         async deletePayment(id: string) {
             try {
                 await api.delete(`/api/v1/payments/${id}/delete`);

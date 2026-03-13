@@ -8,7 +8,7 @@ interface shippingState {
     error: string | null
 }
 
-export const useShippingStore = defineStore('shiping', {
+export const useShippingStore = defineStore('shipping', {
     state: (): shippingState => ({
         shippings: [],
         loading: false,
@@ -16,13 +16,15 @@ export const useShippingStore = defineStore('shiping', {
     }),
     actions: {
         async fetchShippings() {
-            this.loading = true;
+            this.loading = true
+            this.error = null
             try {
                 const res = await api.get('/api/v1/shippings');
                 this.shippings = res.data as IShipping[];
             } catch (e: any) {
-                this.loading = false;
                 this.error = e.message;
+            } finally {
+                this.loading = false
             }
         },
 
@@ -32,7 +34,6 @@ export const useShippingStore = defineStore('shiping', {
                 this.shippings.push(res.data as IShipping);
                 return { success: true };
             } catch (e: any) {
-                this.loading = false;
                 this.error = e.message;
             }
         },
@@ -46,17 +47,15 @@ export const useShippingStore = defineStore('shiping', {
                 }
                 return { success: true };
             } catch (e: any) {
-                this.loading = false;
                 this.error = e.message;
             }
         },
 
         async deleteShiiping(id: string) {
             try {
-                await api.delete(`/api/v1/shippings/${id}`);
+                await api.delete(`/api/v1/shippings/${id}/delete`);
                 this.shippings = this.shippings.filter(s => s.id !== id);
             } catch (e: any) {
-                this.loading = false;
                 this.error = e.message;
             }
         }

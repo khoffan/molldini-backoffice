@@ -34,9 +34,6 @@ export interface ICreatePaymentChild {
 export interface ICreatePaymentBody {
     label: string;
     method: string;
-    icon?: {
-        url: string;
-        path: string;
-    };
+    icon?: Media;
     children: ICreatePaymentChild[]; // ใช้ mapping เข้า paymentChilds ใน controller
 }

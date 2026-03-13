@@ -11,7 +11,25 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         name: "Home",
-        component: () => import("../pages/HomePage.vue"),
+        component: () => import("../pages/OverviewPage.vue"),
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/orders/stats",
+        name: "OrderStat",
+        component: () => import("../pages/OrderStatOverviewPage.vue"),
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/users/stats",
+        name: "UserStat",
+        component: () => import("../pages/UserOverviewStatPage.vue"),
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/merchants/stats",
+        name: "MerchantStat",
+        component: () => import("../pages/MerchantStatOverviewPage.vue"),
         meta: { requiresAuth: true },
     },
     {
@@ -41,22 +59,22 @@ const routes: Array<RouteRecordRaw> = [
                 path: "",
                 name: "payment-list",
                 component: () => import("../pages/PaymentPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
             {
                 path: "add",
                 name: "payment-add",
                 component: () => import("../pages/AddPaymentPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
             {
                 path: "edit/:id",
                 name: "payment-edit",
                 component: () => import("../pages/EditPaymentPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
         ],
-        meta: { guardOnly: true },
+        meta: { requiresAuth: true },
 
     },
     {
@@ -68,22 +86,22 @@ const routes: Array<RouteRecordRaw> = [
                 path: "",
                 name: "shipping-list",
                 component: () => import("../pages/ShippingPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
             {
                 path: "add",
                 name: "shipping-add",
                 component: () => import("../pages/AddShippingPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
             {
                 path: "edit/:id",
                 name: "shipping-edit",
                 component: () => import("../pages/EditShippingPage.vue"),
-                meta: { guardOnly: true },
+                meta: { requiresAuth: true },
             },
         ],
-        meta: { guardOnly: true },
+        meta: { requiresAuth: true },
     },
     {
         // ดักทางเดินมั่ว (404) ที่คุยกันไว้ใน React

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { usePaymentStore } from '@/stores/paymentStore';
-import PaymentTable from '@/components/PaymentTable.vue';
+import { onMounted } from "vue";
+import { usePaymentStore } from "@/stores/paymentStore";
+import { useAlert } from "@/utils/swal";
+import PaymentTable from "@/components/PaymentTable.vue";
 
 const paymentStore = usePaymentStore();
 
@@ -16,8 +17,19 @@ onMounted(() => {
 // };
 
 const handleDelete = async (id: string) => {
-  if (confirm('คุณแน่ใจหรือไม่ที่จะลบช่องทางนี้? ข้อมูลลูกทั้งหมดจะถูกลบไปด้วย')) {
-    await paymentStore.deletePayment(id);
+  // เรียกใช้แบบ Confirm
+  const result = await useAlert.confirm(
+    "คุณแน่ใจหรือไม่?",
+    "ข้อมูลลูกทั้งหมดจะถูกลบไปด้วย",
+  );
+
+  if (result.isConfirmed) {
+    try {
+      await paymentStore.deletePayment(id);
+      useAlert.toast("ลบข้อมูลสำเร็จ"); // เรียกใช้แบบ Toast
+    } catch (error: any) {
+      useAlert.error("เกิดข้อผิดพลาด", error.message); // เรียกใช้แบบ Error Popup
+    }
   }
 };
 
@@ -28,13 +40,16 @@ const handleToggle = async (id: string, currentStatus: boolean) => {
 
 <template>
   <div class="p-6 space-y-6">
-    <div v-if="paymentStore.loading && paymentStore.payments.length === 0" class="text-center">
-       Loading...
+    <div
+      v-if="paymentStore.loading && paymentStore.payments.length === 0"
+      class="text-center"
+    >
+      Loading...
     </div>
 
-    <PaymentTable 
-      v-else 
-      :payments="paymentStore.payments" 
+    <PaymentTable
+      v-else
+      :payments="paymentStore.payments"
       @delete="handleDelete"
       @toggle="handleToggle"
     />
