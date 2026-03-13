@@ -37,7 +37,6 @@ export const useAuthStore = defineStore('auth', {
         async syncAuth({ idtoken }: { idtoken: string }) {
             this.loading = true
             try {
-                console.log("idtoken =>", idtoken);
                 const role = UserRole.ADMIN
                 const res = await api.post("/api/v1/users/me", {
                     role,
