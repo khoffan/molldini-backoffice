@@ -313,7 +313,17 @@ const OMISE_METHODS = [
     isCard: false,
   },
   { label: "แรบบิท ไลน์เพย์", value: "rabbit_linepay", isCard: false },
-  { label: "ทรูมันนี่ (TrueMoney)", value: "truemoney", isCard: false },
+  // แยก TrueMoney ออกเป็น 2 หัวข้อหลักตามวิธีการชำระเงิน
+  {
+    label: "ทรูมันนี่ จัมป์แอป (TrueMoney JumpApp)",
+    value: "truemoney_jumpapp",
+    isCard: false,
+  },
+  {
+    label: "ทรูมันนี่ คิวอาร์ (TrueMoney QR)",
+    value: "truemoney_qr",
+    isCard: false,
+  },
   { label: "ShopeePay", value: "shopeepay", isCard: false },
 ];
 

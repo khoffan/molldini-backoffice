@@ -40,7 +40,7 @@ export const useShippingStore = defineStore('shipping', {
 
         async updateShipping(id: string, shipping: IUpdateShippingBody) {
             try {
-                const res = await api.put(`/api/v1/shippings/${id}`, shipping);
+                const res = await api.patch(`/api/v1/shippings/${id}/update`, shipping);
                 const index = this.shippings.findIndex(s => s.id === id);
                 if (index !== -1) {
                     this.shippings[index] = res.data as IShipping;
