@@ -8,18 +8,13 @@
       >
         Main Menu
       </p>
-
       <nav class="space-y-1">
         <router-link
           v-for="item in menuItems"
           :key="item.path"
           :to="item.path"
           class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group"
-          :class="[
-            $route.path === item.path
-              ? 'bg-blue-50 text-blue-600'
-              : 'text-slate-600 hover:bg-slate-50',
-          ]"
+          active-class="bg-blue-50 text-blue-600"
         >
           <span class="text-xl">{{ item.icon }}</span>
           <span class="font-medium">{{ item.name }}</span>
@@ -35,12 +30,21 @@
       </p>
       <nav class="space-y-1">
         <router-link
+          to="/system/revenue"
+          class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors font-medium"
+          active-class="bg-blue-50 text-blue-600"
+        >
+          <span>💰</span> <span>Revenue & Fees</span>
+        </router-link>
+
+        <router-link
           to="/shippings"
           class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors font-medium"
           active-class="bg-blue-50 text-blue-600"
         >
           <span>🚚</span> <span>Shipping</span>
         </router-link>
+
         <router-link
           to="/payments"
           class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors font-medium"

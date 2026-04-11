@@ -104,6 +104,20 @@ const routes: Array<RouteRecordRaw> = [
         meta: { requiresAuth: true },
     },
     {
+        path: "/system/revenue",
+        name: "revenue",
+        component: () => import("../layout/BaseLayout.vue"),
+        children: [
+            {
+                path: "",
+                name: "revenue-list",
+                component: () => import("../pages/SystemRevenuPage.vue"),
+                meta: { requiresAuth: true },
+            },
+        ],
+        meta: { requiresAuth: true },
+    },
+    {
         // ดักทางเดินมั่ว (404) ที่คุยกันไว้ใน React
         path: "/:pathMatch(.*)*",
         redirect: "/",
