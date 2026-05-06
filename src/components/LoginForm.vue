@@ -49,10 +49,6 @@ const handleSubmit = async () => {
     loading.value = false;
   }
 };
-
-const handleToRegister = () => {
-  router.push("/register");
-}
 </script>
 
 <template>
@@ -114,16 +110,6 @@ const handleToRegister = () => {
           }}</span>
         </button>
       </form>
-
-      <div class="mt-6 text-center text-sm text-slate-600">
-        ต้องการสร้างบัญชีใหม่?
-        <button
-          @click="handleToRegister"
-          class="text-indigo-600 font-bold hover:underline ml-1"
-        >
-          สมัครสมาชิกที่นี่
-        </button>
-      </div>
     </div>
   </div>
 </template>

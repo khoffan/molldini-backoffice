@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from "vue";
-import { useRevenueSystemStore } from "@/stores/revenueSystemStore";
+import { useRevenueSystemStore } from "../stores/revenueSystemStore";
 import Swal from "sweetalert2";
 
 const store = useRevenueSystemStore();
