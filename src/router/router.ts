@@ -45,12 +45,6 @@ const routes: Array<RouteRecordRaw> = [
         meta: { guardOnly: true },
     },
     {
-        path: "/register",
-        name: "Register",
-        component: () => import("../pages/RegisterPage.vue"),
-        meta: { guardOnly: true },
-    },
-    {
         path: "/payments",
         name: "payment",
         component: () => import("../layout/BaseLayout.vue"),
